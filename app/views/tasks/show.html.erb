@@ -1,7 +1,17 @@
 <h1><%= @task.title %></h1>
-
-<p>Details:</p>
 <p><%= @task.details %></p>
 
-<p>Completed:</p>
-<p><%= @task.completed %></p>
+<%= form_with model: @task do |f| %>
+  <% if !@task.completed %>
+      <%= f.check_box :completed %>
+      <%= f.label :completed, 'Complete this task' %><br>
+      <br>
+    <%= f.submit 'Update Task' %><br>
+    <br>
+  <% end %>
+  <%= link_to 'Back to list', tasks_path %>
+  <%= link_to "Delete",
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<% end %>

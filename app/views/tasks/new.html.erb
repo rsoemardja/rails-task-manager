@@ -1,11 +1,2 @@
 <h1>Create Task</h1>
-
-<%= form_with model: @task do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :details %>
-  <%= f.text_area :details %>
-
-  <%= f.submit "Create Task" %>
-<% end %>
+<%= render 'form', task: @task  %>
